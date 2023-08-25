@@ -1,7 +1,8 @@
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Res } from '@nestjs/common';
 import { User } from '../entity/user.entity';
+import { Response } from 'express';
 
 @ApiTags('user')
 @Controller('user')
@@ -11,9 +12,9 @@ export class UserController {
   @Post()
   @ApiResponse({
     status: 201,
-    description: 'The record has been successfully created.',
+    description: 'The user has been successfully created.',
   })
-  createUser(@Body() user: User) {
+  createUser(@Body() user: User, @Res() res: Response) {
     return this.userService.create(user);
   }
 }

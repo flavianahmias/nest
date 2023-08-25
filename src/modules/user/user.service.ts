@@ -11,4 +11,23 @@ export class UserService {
   async create(user: User) {
     await this.userRepository.insert({ name: 'test2' });
   }
+
+  async findOne(username: string) {
+    const users = [
+      {
+        userId: 1,
+        username: 'john',
+        password: 'changeme',
+        role: 0,
+      },
+      {
+        userId: 2,
+        username: 'maria',
+        password: 'guess',
+        role: 1,
+      },
+    ];
+
+    return users.find((user) => user.username === username);
+  }
 }

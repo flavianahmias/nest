@@ -22,10 +22,15 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ApiProperty({ type: [String] })
+  @ApiProperty()
   @Column({ length: 50 })
   name: string;
 
-  //   @Column()
-  //   role: number;
+  @ApiProperty()
+  @Column()
+  password: string;
+
+  @ApiProperty()
+  @Column()
+  role?: Role;
 }
