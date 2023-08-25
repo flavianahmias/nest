@@ -1,4 +1,5 @@
 import { ApiProperty, ApiTags } from '@nestjs/swagger';
+import { RoleEnum } from 'src/enums/role.enum';
 import {
   Entity,
   Column,
@@ -7,11 +8,6 @@ import {
   JoinTable,
   OneToMany,
 } from 'typeorm';
-
-export enum Role {
-  General,
-  Administrator,
-}
 
 @Entity()
 export class User {
@@ -32,5 +28,5 @@ export class User {
 
   @ApiProperty()
   @Column()
-  role?: Role;
+  role?: RoleEnum;
 }

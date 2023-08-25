@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User } from '../entity/user.entity';
+import { RoleEnum } from 'src/enums/role.enum';
 
 @Injectable()
 export class UserService {
@@ -16,18 +17,22 @@ export class UserService {
     const users = [
       {
         userId: 1,
-        username: 'john',
-        password: 'changeme',
-        role: 0,
+        username: 'string',
+        password: 'string',
+        role: RoleEnum.Admin,
       },
       {
         userId: 2,
         username: 'maria',
         password: 'guess',
-        role: 1,
+        role: 0,
       },
     ];
 
     return users.find((user) => user.username === username);
+  }
+
+  async findUsers() {
+    return this.userRepository.find();
   }
 }
