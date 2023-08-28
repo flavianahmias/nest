@@ -10,29 +10,54 @@ export class UserService {
   ) {}
 
   async create(user: User) {
-    await this.userRepository.insert({ name: 'test2' });
+    const existUser = await this.userRepository.findOne({
+      where: { name: user.name },
+    });
+
+    if (!existUser) {
+      const createUser = await this.userRepository.insert({
+        ...user,
+        role: RoleEnum.User,
+      });
+      return createUser;
+    }
   }
 
-  async findOne(username: string) {
-    const users = [
-      {
-        userId: 1,
-        username: 'string',
-        password: 'string',
-        role: RoleEnum.Admin,
-      },
-      {
-        userId: 2,
-        username: 'maria',
-        password: 'guess',
-        role: 0,
-      },
-    ];
+  // JWT Authentication
+  async findOne(email: string) {
+    const user = await this.userRepository.findOne({
+      where: { email: email },
+    });
+    return user;
+  }
 
-    return users.find((user) => user.username === username);
+  async getUserById(id: number) {
+    const user = await this.userRepository.findOne({
+      where: { id: id },
+    });
+
+    console.log('user');
+    return user;
   }
 
   async findUsers() {
     return this.userRepository.find();
+  }
+
+  async changeUserRole(userId: number, role: RoleEnum) {
+    const user = await this.userRepository.findOneOrFail({
+      where: { id: userId },
+    });
+
+    if (user) {
+      user.role = role;
+      await this.userRepository.save(user);
+
+      return await this.userRepository.findOne({
+        where: {
+          id: userId,
+        },
+      });
+    }
   }
 }

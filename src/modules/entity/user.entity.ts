@@ -28,5 +28,10 @@ export class User {
 
   @ApiProperty()
   @Column()
+  email: string;
+
+  @Column({ nullable: true })
   role?: RoleEnum;
+
+  products?: [];
 }

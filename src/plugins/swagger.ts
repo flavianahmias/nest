@@ -4,7 +4,7 @@ export const swaggerConfig = new DocumentBuilder()
   .setTitle('Nest')
   .setDescription('The Nest API description')
   .setVersion('1.0')
-  .addBearerAuth(undefined, 'JWT-auth')
+  // .addBearerAuth(undefined, 'JWT-auth')
   .build();
 
 export const options = {
@@ -19,7 +19,7 @@ export const options = {
           scheme: 'bearer',
           bearerFormat: 'JWT',
         },
-        value: 'thisIsASampleBearerAuthToken123',
+        value: '',
       },
     },
   },
