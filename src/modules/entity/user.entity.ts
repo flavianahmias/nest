@@ -8,6 +8,7 @@ import {
   JoinTable,
   OneToMany,
 } from 'typeorm';
+import { Products } from './producst.entity';
 
 @Entity()
 export class User {
@@ -33,5 +34,8 @@ export class User {
   @Column({ nullable: true })
   role?: RoleEnum;
 
-  products?: [];
+  shopping?: Products[];
+
+  @Column()
+  balance?: number;
 }
