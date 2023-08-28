@@ -9,11 +9,11 @@ import {
   Post,
   Res,
 } from '@nestjs/common';
-import { User } from '../entity/user.entity';
+import { User } from '../../entity/user.entity';
 import { Response } from 'express';
 import { Public } from 'src/plugins/guard';
 import { RoleEnum } from 'src/enums/role.enum';
-import { changeUserRoleDTO } from '../dtos/changeUserRole.dto';
+import { changeUserRoleDTO } from '../../dtos/changeUserRole.dto';
 
 @ApiTags('user')
 // @ApiBearerAuth('JWT-auth')
