@@ -18,6 +18,7 @@ export class UserService {
       const createUser = await this.userRepository.insert({
         ...user,
         role: RoleEnum.User,
+        balance: 0,
       });
       return createUser;
     }

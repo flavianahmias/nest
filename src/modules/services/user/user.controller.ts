@@ -23,7 +23,7 @@ export class UserController {
 
   // @Public()
   @Post()
-  async createUser(@Param('user') user: User, @Res() res: Response) {
+  async createUser(@Body() user: User, @Res() res: Response) {
     const createdUser = await this.userService.create(user);
 
     if (createdUser) {
@@ -47,10 +47,7 @@ export class UserController {
   }
 
   @Post('change-role')
-  async changeUserRole(
-    @Param('user') user: changeUserRoleDTO,
-    @Res() res: Response,
-  ) {
+  async changeUserRole(@Body() user: changeUserRoleDTO, @Res() res: Response) {
     const userChanged = await this.userService.changeUserRole(
       user.userId,
       user.role,
