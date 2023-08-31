@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { ProcutsEnum } from 'src/enums/products.enum';
+import { ProductCategoryEnum } from 'src/enums/products.enum';
 import {
   Entity,
   Column,
@@ -19,12 +19,12 @@ export class Products {
   id: number;
 
   @ApiProperty()
-  @Column({ length: 50 })
+  @Column()
   name: string;
 
   @ApiProperty()
   @Column()
-  type: ProcutsEnum;
+  category: ProductCategoryEnum;
 
   @ApiProperty()
   @Column()

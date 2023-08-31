@@ -1,4 +1,4 @@
-export enum ProcutsEnum {
+export enum ProductCategoryEnum {
   toy = 'toy',
   clothes = 'clothes',
   shoes = 'shoes',

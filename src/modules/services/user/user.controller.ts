@@ -23,10 +23,6 @@ export class UserController {
 
   // @Public()
   @Post()
-  @ApiResponse({
-    status: 201,
-    description: 'The user has been successfully created.',
-  })
   async createUser(@Param('user') user: User, @Res() res: Response) {
     const createdUser = await this.userService.create(user);
 
